@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 自定义样式 */
+@layer utilities {
+  /* 文本截断样式 */
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+  
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+}
+
+/* 基础样式优化 */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-gray-50;
+  }
+  
+  /* 确保图片响应式 */
+  img {
+    @apply max-w-full h-auto;
+  }
+  
+  /* 优化按钮和链接的触摸目标大小 */
+  button, 
+  a {
+    @apply min-h-[44px] min-w-[44px] sm:min-h-[40px] sm:min-w-[40px];
+  }
+  
+  /* 优化表单元素 */
+  input, 
+  textarea, 
+  select {
+    @apply text-base;
+  }
+  
+  /* 移动端优化 */
+  @media (max-width: 640px) {
+    input, 
+    textarea, 
+    select {
+      @apply text-base; /* 防止iOS缩放 */
+    }
+  }
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
