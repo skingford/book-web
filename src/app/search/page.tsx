@@ -139,12 +139,12 @@ export default function SearchPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-4xl">
+    <div className="container mx-auto px-4 py-8 max-w-4xl page-transition">
       {/* 页面标题 */}
-      <div className="flex items-center mb-8">
+      <div className="flex items-center mb-8 animate-fade-in">
         <Link 
           href="/"
-          className="mr-4 p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+          className="mr-4 p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg btn-bounce"
         >
           <ArrowLeft className="w-5 h-5" />
         </Link>
@@ -168,23 +168,23 @@ export default function SearchPage() {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="block w-full pl-10 pr-20 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg"
+            className="block w-full pl-10 pr-20 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg input-focus"
             placeholder="搜索标题、描述、链接或标签..."
           />
           <div className="absolute inset-y-0 right-0 flex items-center">
             {query && (
               <button
-                type="button"
-                onClick={clearSearch}
-                className="mr-2 px-3 py-1 text-sm text-gray-500 hover:text-gray-700 transition-colors"
-              >
+              type="button"
+              onClick={clearSearch}
+              className="mr-2 px-3 py-1 text-sm text-gray-500 hover:text-gray-700 btn-bounce"
+            >
                 清空
               </button>
             )}
             <button
               type="submit"
               disabled={isLoading}
-              className="mr-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="mr-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed btn-bounce"
             >
               {isLoading ? '搜索中...' : '搜索'}
             </button>
@@ -221,8 +221,12 @@ export default function SearchPage() {
             </div>
           ) : results.length > 0 ? (
             <div className="space-y-4">
-              {results.map((bookmark) => (
-                <div key={bookmark.id} className="bg-white rounded-lg shadow-md border border-gray-200 p-6 hover:shadow-lg transition-shadow">
+              {results.map((bookmark, index) => (
+                <div 
+                  key={bookmark.id} 
+                  className="bg-white rounded-lg shadow-md border border-gray-200 p-6 hover:shadow-lg transition-shadow card-hover animate-fade-in"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
                   {/* 收藏标题和链接 */}
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1">

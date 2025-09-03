@@ -30,13 +30,13 @@ export default function RootLayout({
                 </h1>
               </div>
               <nav className="flex space-x-8">
-                <a href="/" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
+                <a href="/" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium btn-bounce">
                   首页
                 </a>
-                <a href="/categories" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
+                <a href="/categories" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium btn-bounce">
                   分类管理
                 </a>
-                <a href="/search" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
+                <a href="/search" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium btn-bounce">
                   搜索
                 </a>
               </nav>

@@ -25,9 +25,9 @@ export default async function CategoriesPage() {
   const categories = await getCategories()
   
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 page-transition">
       {/* 页面标题和操作 */}
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex justify-between items-center mb-8 animate-fade-in">
         <div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
             分类管理
@@ -38,7 +38,7 @@ export default async function CategoriesPage() {
         </div>
         <Link 
           href="/categories/new"
-          className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+          className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 btn-bounce"
         >
           <Plus className="w-4 h-4 mr-2" />
           新建分类
@@ -57,7 +57,7 @@ export default async function CategoriesPage() {
           </p>
           <Link 
             href="/categories/new"
-            className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 btn-bounce"
           >
             <Plus className="w-4 h-4 mr-2" />
             创建分类
@@ -65,8 +65,12 @@ export default async function CategoriesPage() {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {categories.map((category) => (
-            <div key={category.id} className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
+          {categories.map((category, index) => (
+            <div 
+              key={category.id} 
+              className="bg-white rounded-lg shadow-md p-6 border border-gray-200 card-hover animate-fade-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
               {/* 分类标题 */}
               <div className="flex items-center mb-4">
                 <div 
@@ -101,7 +105,7 @@ export default async function CategoriesPage() {
                 <div className="flex space-x-2">
                   <Link 
                     href={`/categories/${category.id}/edit`}
-                    className="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                    className="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg btn-bounce"
                     title="编辑分类"
                   >
                     <Edit className="w-4 h-4" />

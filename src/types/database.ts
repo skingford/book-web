@@ -101,4 +101,5 @@ export type BookmarkWithCategory = Bookmark & {
 
 export type CategoryWithBookmarks = Category & {
   bookmarks: Bookmark[]
-  bookmark_count?:
+  bookmark_count?: number
+}

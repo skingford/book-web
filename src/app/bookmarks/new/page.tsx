@@ -217,7 +217,7 @@ export default function NewBookmarkPage() {
             id="title"
             value={formData.title}
             onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent input-focus"
             placeholder="请输入收藏标题"
             maxLength={100}
             required
@@ -233,9 +233,9 @@ export default function NewBookmarkPage() {
             type="url"
             id="url"
             value={formData.url}
-            onChange={(e) => handleUrlChange(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            placeholder="https://example.com"
+            onChange={(e) => setFormData({ ...formData, url: e.target.value })}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent input-focus"
+            placeholder="请输入网站链接（如：https://example.com）"
             required
           />
         </div>
@@ -249,7 +249,7 @@ export default function NewBookmarkPage() {
             id="description"
             value={formData.description}
             onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent input-focus"
             placeholder="请输入收藏描述（可选）"
             rows={3}
             maxLength={500}
@@ -287,7 +287,7 @@ export default function NewBookmarkPage() {
             id="tags"
             value={formData.tags}
             onChange={(e) => setFormData({ ...formData, tags: e.target.value })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent input-focus"
             placeholder="输入标签，用逗号分隔（如：工具,设计,前端）"
           />
           <p className="text-sm text-gray-500 mt-1">

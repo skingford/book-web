@@ -34,9 +34,9 @@ export default async function HomePage() {
   const categories = await getCategoriesWithBookmarks()
   
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 page-transition">
       {/* 页面标题和操作 */}
-      <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center mb-8 gap-4">
+      <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center mb-8 gap-4 animate-fade-in">
         <div>
           <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
             我的收藏导航
@@ -48,21 +48,21 @@ export default async function HomePage() {
         <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
           <Link 
             href="/search"
-            className="inline-flex items-center justify-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+            className="inline-flex items-center justify-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 btn-bounce"
           >
             <Search className="w-4 h-4 mr-2" />
             搜索收藏
           </Link>
           <Link 
             href="/categories"
-            className="inline-flex items-center justify-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+            className="inline-flex items-center justify-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 btn-bounce"
           >
             <Settings className="w-4 h-4 mr-2" />
             管理分类
           </Link>
           <Link 
             href="/bookmarks/new"
-            className="inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            className="inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 btn-bounce"
           >
             <Plus className="w-4 h-4 mr-2" />
             添加收藏
@@ -82,16 +82,20 @@ export default async function HomePage() {
           </p>
           <Link 
             href="/categories"
-            className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 btn-bounce"
           >
             <Plus className="w-4 h-4 mr-2" />
             创建分类
           </Link>
         </div>
       ) : (
-        <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-          {categories.map((category) => (
-            <div key={category.id} className="bg-white rounded-lg shadow-md border border-gray-200 p-4 sm:p-6 hover:shadow-lg transition-shadow">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {categories.map((category, index) => (
+            <div 
+              key={category.id} 
+              className="bg-white rounded-lg shadow-sm border p-6 card-hover animate-fade-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
               {/* 分类标题 */}
               <div className="flex items-center mb-4">
                 <div 
