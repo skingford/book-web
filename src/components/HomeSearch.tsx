@@ -105,7 +105,7 @@ const HomeSearch: React.FC<HomeSearchProps> = ({
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => setIsOpen(true)}
           onKeyDown={handleKeyDown}
-          className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-4 text-base sm:text-lg border-2 border-gray-200 rounded-xl sm:rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-200 bg-white shadow-sm hover:shadow-md"
+          className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-4 sm:py-5 text-base sm:text-lg border-0 bg-transparent focus:outline-none placeholder-gray-400 text-gray-700"
         />
         {query && (
           <button

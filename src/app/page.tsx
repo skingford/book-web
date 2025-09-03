@@ -136,27 +136,30 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* 顶部搜索栏区域 */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <h1 className="text-xl font-bold text-gray-900">我的书签导航</h1>
-            </div>
-            <div className="flex-1 max-w-2xl mx-8">
-              <HomeSearch 
-                suggestions={searchSuggestions}
-                recentSearches={['React 教程', '设计工具', 'AI 工具']}
-                popularSearches={['开发工具', '设计资源', '学习资料', '娱乐']}
-              />
-            </div>
-            <div className="flex items-center space-x-2">
-              <Link 
-                href="/bookmarks/new" 
-                className="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors"
-              >
-                <Plus className="w-4 h-4 mr-2" />
-                添加书签
-              </Link>
+      <header className="sticky top-0 z-50 bg-white/98 backdrop-blur-xl border-b border-gray-100/50 shadow-lg">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex items-center justify-center">
+            {/* 搜索区域 - 居中布局 */}
+            <div className="relative w-full max-w-3xl">
+              <div className="flex items-center bg-gradient-to-r from-gray-50 to-white rounded-2xl border-2 border-gray-200/60 shadow-sm hover:shadow-lg hover:border-blue-300/60 transition-all duration-300 group">
+                {/* 搜索输入框 */}
+                <div className="flex-1 relative">
+                  <HomeSearch 
+                    suggestions={searchSuggestions}
+                    recentSearches={['React 教程', '设计工具', 'AI 工具']}
+                    popularSearches={['开发工具', '设计资源', '学习资料', '娱乐']}
+                  />
+                </div>
+                {/* 搜索按钮 */}
+                <button className="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl mr-2 hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg group-hover:shadow-blue-200">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </button>
+              </div>
+              
+              {/* 装饰性元素 */}
+              <div className="absolute -top-1 -left-1 w-full h-full bg-gradient-to-r from-blue-100/30 to-purple-100/30 rounded-2xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
           </div>
         </div>
