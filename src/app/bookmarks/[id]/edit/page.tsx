@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft, Save, Trash2, Edit3, Link as LinkIcon, FileText, Tag, Folder } from 'lucide-react'
-import { supabase } from '@/lib/supabase'
+import { createClientSupabaseClient } from '@/lib/supabase'
 import { Category, Bookmark } from '@/types/database'
 
 interface EditBookmarkPageProps {
@@ -33,7 +33,7 @@ export default function EditBookmarkPage({ params }: EditBookmarkPageProps) {
   useEffect(() => {
     const loadData = async () => {
       try {
-      
+        const supabase = createClientSupabaseClient()
         
         // 并行加载收藏和分类数据
         const [bookmarkResult, categoriesResult] = await Promise.all([
@@ -115,7 +115,7 @@ export default function EditBookmarkPage({ params }: EditBookmarkPageProps) {
     setError('')
     
     try {
-      const supabase = createClient()
+      const supabase = createClientSupabaseClient()
       
       // 处理标签
       const tags = formData.tags
@@ -160,7 +160,7 @@ export default function EditBookmarkPage({ params }: EditBookmarkPageProps) {
     setError('')
     
     try {
-      const supabase = createClient()
+      const supabase = createClientSupabaseClient()
       
       const { error: deleteError } = await supabase
         .from('bookmarks')

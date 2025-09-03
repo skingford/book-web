@@ -44,6 +44,7 @@ export interface Database {
           description: string | null
           favicon_url: string | null
           category_id: string
+          tags: string[] | null
           created_at: string
           updated_at: string
         }
@@ -54,6 +55,7 @@ export interface Database {
           description?: string | null
           favicon_url?: string | null
           category_id: string
+          tags?: string[] | null
           created_at?: string
           updated_at?: string
         }
@@ -64,6 +66,7 @@ export interface Database {
           description?: string | null
           favicon_url?: string | null
           category_id?: string
+          tags?: string[] | null
           created_at?: string
           updated_at?: string
         }

@@ -26,44 +26,373 @@
     -webkit-line-clamp: 3;
   }
 
-  /* 现代化卡片样式 */
+  /* 高级卡片样式 - 精致质感与边缘处理 */
   .card {
-    @apply bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.9));
+    border: 1px solid rgba(226, 232, 240, 0.6);
+    border-radius: 24px;
+    box-shadow: 
+      0 12px 48px rgba(0, 0, 0, 0.06),
+      0 6px 24px rgba(0, 0, 0, 0.04),
+      0 2px 8px rgba(0, 0, 0, 0.02),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      inset 0 -1px 0 rgba(226, 232, 240, 0.3);
+    backdrop-filter: blur(20px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  }
+
+  .card::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    pointer-events: none;
+  }
+
+  .card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 
+      0 24px 80px rgba(0, 0, 0, 0.1),
+      0 12px 40px rgba(0, 0, 0, 0.08),
+      0 6px 20px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95),
+      inset 0 -1px 0 rgba(226, 232, 240, 0.4);
+    border-color: rgba(203, 213, 225, 0.8);
+  }
+
+  .card:hover::after {
+    border-color: rgba(255, 255, 255, 0.6);
   }
 
   .card-hover {
-    @apply hover:shadow-xl hover:-translate-y-1 transition-all duration-300;
+    @apply hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-out;
   }
 
-  /* 渐变背景 */
+  /* 高级渐变背景样式 - 精致纹理 */
   .gradient-bg {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.15) 0%, transparent 50%),
+      linear-gradient(135deg, 
+        rgba(99, 102, 241, 0.08) 0%, 
+        rgba(168, 85, 247, 0.08) 50%, 
+        rgba(236, 72, 153, 0.08) 100%);
+    position: relative;
+  }
+
+  .gradient-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 255, 255, 0.03) 2px,
+        rgba(255, 255, 255, 0.03) 4px
+      );
+    pointer-events: none;
+  }
+
+  /* 精致纹理效果 */
+  .texture-subtle {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .texture-subtle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(0, 0, 0, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .texture-fabric {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .texture-fabric::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 1px,
+        rgba(255, 255, 255, 0.02) 1px,
+        rgba(255, 255, 255, 0.02) 2px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 1px,
+        rgba(0, 0, 0, 0.02) 1px,
+        rgba(0, 0, 0, 0.02) 2px
+      );
+    pointer-events: none;
+  }
+
+  .shimmer-effect {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer-effect::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transition: left 0.8s ease;
+  }
+
+  .shimmer-effect:hover::after {
+    left: 100%;
+  }
+
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes subtleFloat {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-2px);
+    }
+  }
+
+  @keyframes gentleGlow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+    }
+    50% {
+      box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
+    }
   }
 
   .gradient-primary {
-    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    background: linear-gradient(135deg, 
+      #667eea 0%, 
+      #764ba2 50%,
+      #667eea 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gradient-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+      rgba(255, 255, 255, 0.1) 25%, 
+      transparent 25%, 
+      transparent 75%, 
+      rgba(255, 255, 255, 0.1) 75%);
+    background-size: 20px 20px;
+    opacity: 0.3;
+    pointer-events: none;
   }
 
   .gradient-secondary {
-    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    background: linear-gradient(135deg, 
+      #f093fb 0%, 
+      #f5576c 50%,
+      #f093fb 100%);
+    position: relative;
+    overflow: hidden;
   }
 
-  /* 玻璃态效果 */
+  .gradient-secondary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+    background-size: 15px 15px;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  /* 高级玻璃拟态效果 */
   .glass {
-    @apply bg-white/80 backdrop-blur-sm border border-white/20;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    box-shadow: 
+      0 10px 40px rgba(0, 0, 0, 0.08),
+      0 4px 16px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
   }
 
-  /* 现代化按钮样式 */
+  .glass::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    border-radius: 20px 20px 0 0;
+  }
+
+  .glass::after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    right: 1px;
+    bottom: 1px;
+    border-radius: 19px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+  }
+
+  .glass:hover {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.1));
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 
+      0 16px 64px rgba(0, 0, 0, 0.12),
+      0 8px 32px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+  }
+
+  .glass:hover::after {
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  /* 高级按钮样式 - 精致质感 */
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium rounded-xl shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 transform hover:-translate-y-0.5;
+    @apply inline-flex items-center justify-center px-6 py-3 font-medium rounded-2xl relative overflow-hidden;
+    background: linear-gradient(145deg, #3b82f6, #1d4ed8);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+      0 8px 32px rgba(59, 130, 246, 0.3),
+      0 4px 16px rgba(59, 130, 246, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 
+      0 12px 48px rgba(59, 130, 246, 0.4),
+      0 6px 24px rgba(59, 130, 246, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  }
+
+  .btn-primary:hover::before {
+    left: 100%;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-gray-100 text-gray-700 font-medium rounded-xl hover:bg-gray-200 transition-all duration-300 transform hover:-translate-y-0.5;
+    @apply inline-flex items-center justify-center px-6 py-3 font-medium rounded-2xl relative overflow-hidden;
+    background: linear-gradient(145deg, rgba(248, 250, 252, 0.9), rgba(241, 245, 249, 0.8));
+    color: #475569;
+    border: 1px solid rgba(203, 213, 225, 0.5);
+    box-shadow: 
+      0 4px 16px rgba(0, 0, 0, 0.05),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-secondary:hover {
+    transform: translateY(-2px) scale(1.02);
+    background: linear-gradient(145deg, rgba(241, 245, 249, 0.95), rgba(226, 232, 240, 0.9));
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    color: #334155;
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200;
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-xl relative overflow-hidden;
+    color: #64748b;
+    background: transparent;
+    border: 1px solid transparent;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-ghost:hover {
+    color: #0f172a;
+    background: linear-gradient(145deg, rgba(248, 250, 252, 0.8), rgba(241, 245, 249, 0.6));
+    border-color: rgba(203, 213, 225, 0.3);
+    backdrop-filter: blur(10px);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
   }
 }
 
@@ -128,6 +457,63 @@
 }
 
 :root {
+  /* 高级色彩系统 - 精致配色 */
+  --foreground-rgb: 15, 23, 42;
+  --background-start-rgb: 248, 250, 252;
+  --background-end-rgb: 255, 255, 255;
+  
+  /* 主色调 - 优雅蓝紫色系 */
+  --primary-50: 240, 245, 255;
+  --primary-100: 224, 231, 255;
+  --primary-200: 199, 210, 254;
+  --primary-300: 165, 180, 252;
+  --primary-400: 129, 140, 248;
+  --primary-500: 99, 102, 241;
+  --primary-600: 79, 70, 229;
+  --primary-700: 67, 56, 202;
+  --primary-800: 55, 48, 163;
+  --primary-900: 49, 46, 129;
+  
+  /* 次要色调 - 温暖粉紫色系 */
+  --secondary-50: 253, 244, 255;
+  --secondary-100: 250, 232, 255;
+  --secondary-200: 245, 208, 254;
+  --secondary-300: 240, 171, 252;
+  --secondary-400: 232, 121, 249;
+  --secondary-500: 168, 85, 247;
+  --secondary-600: 147, 51, 234;
+  --secondary-700: 126, 34, 206;
+  --secondary-800: 107, 33, 168;
+  --secondary-900: 88, 28, 135;
+  
+  /* 中性色调 - 精致灰色系 */
+  --neutral-50: 248, 250, 252;
+  --neutral-100: 241, 245, 249;
+  --neutral-200: 226, 232, 240;
+  --neutral-300: 203, 213, 225;
+  --neutral-400: 148, 163, 184;
+  --neutral-500: 100, 116, 139;
+  --neutral-600: 71, 85, 105;
+  --neutral-700: 51, 65, 85;
+  --neutral-800: 30, 41, 59;
+  --neutral-900: 15, 23, 42;
+  
+  /* 功能色调 */
+  --success: 34, 197, 94;
+  --warning: 245, 158, 11;
+  --error: 239, 68, 68;
+  --info: 59, 130, 246;
+  
+  /* 渐变色组合 */
+  --gradient-primary: linear-gradient(135deg, rgb(var(--primary-500)), rgb(var(--secondary-500)));
+  --gradient-secondary: linear-gradient(135deg, rgb(var(--secondary-400)), rgb(var(--primary-600)));
+  --gradient-neutral: linear-gradient(135deg, rgb(var(--neutral-100)), rgb(var(--neutral-200)));
+  
+  /* 阴影色彩 */
+  --shadow-primary: rgba(var(--primary-500), 0.25);
+  --shadow-secondary: rgba(var(--secondary-500), 0.25);
+  --shadow-neutral: rgba(var(--neutral-900), 0.1);
+  
   --background: #ffffff;
   --foreground: #0f172a;
   --primary: #3b82f6;
@@ -146,6 +532,20 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --foreground-rgb: 248, 250, 252;
+    --background-start-rgb: 15, 23, 42;
+    --background-end-rgb: 30, 41, 59;
+    
+    /* 暗色模式调整 */
+    --neutral-50: 30, 41, 59;
+    --neutral-100: 51, 65, 85;
+    --neutral-200: 71, 85, 105;
+    --neutral-300: 100, 116, 139;
+    --neutral-800: 226, 232, 240;
+    --neutral-900: 248, 250, 252;
+    
+    --shadow-neutral: rgba(0, 0, 0, 0.3);
+    
     --background: #0f172a;
     --foreground: #f8fafc;
     --primary: #3b82f6;
@@ -168,11 +568,11 @@
   }
 }
 
-/* 现代化动画效果 */
+/* 专业动画效果库 */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -182,12 +582,118 @@
 
 @keyframes slideIn {
   from {
-    opacity: 0;
     transform: translateY(30px);
+    opacity: 0;
   }
   to {
-    opacity: 1;
     transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes elegantBounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40%, 43% {
+    transform: translateY(-8px);
+  }
+  70% {
+    transform: translateY(-4px);
+  }
+  90% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(var(--primary-500), 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(var(--primary-500), 0.4);
+  }
+}
+
+@keyframes morphingGradient {
+  0% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+  25% {
+    background-position: 100% 50%;
+    filter: hue-rotate(90deg);
+  }
+  50% {
+    background-position: 100% 100%;
+    filter: hue-rotate(180deg);
+  }
+  75% {
+    background-position: 0% 100%;
+    filter: hue-rotate(270deg);
+  }
+  100% {
+    background-position: 0% 50%;
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes floatingCard {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-3px) rotate(0.5deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-3px) rotate(-0.5deg);
+  }
+}
+
+@keyframes rippleEffect {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
   }
 }
 
@@ -206,16 +712,55 @@
   }
 }
 
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+/* 交互反馈样式 */
+.interactive-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
+
+.interactive-card::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  transition: all 0.6s ease;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.interactive-card:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.interactive-card:active {
+  transform: scale(0.98);
+}
+
+.floating-animation {
+  animation: floatingCard 6s ease-in-out infinite;
+}
+
+.glow-on-hover:hover {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.elegant-entrance {
+  animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.stagger-animation:nth-child(1) { animation-delay: 0.1s; }
+.stagger-animation:nth-child(2) { animation-delay: 0.2s; }
+.stagger-animation:nth-child(3) { animation-delay: 0.3s; }
+.stagger-animation:nth-child(4) { animation-delay: 0.4s; }
+.stagger-animation:nth-child(5) { animation-delay: 0.5s; }
+.stagger-animation:nth-child(6) { animation-delay: 0.6s; }
 
 .animate-fade-in {
   animation: fadeIn 1s ease-out;
