@@ -11,6 +11,11 @@ if (!supabaseUrl || !supabaseAnonKey) {
 // 客户端 Supabase 实例（用于前端）
 export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey)
 
+// 创建客户端 Supabase 实例的函数（用于客户端组件）
+export const createClientSupabaseClient = () => {
+  return createClient<Database>(supabaseUrl, supabaseAnonKey)
+}
+
 // 服务端 Supabase 实例（用于 SSR）
 export const createServerSupabaseClient = () => {
   return createClient<Database>(
